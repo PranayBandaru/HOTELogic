@@ -27,12 +27,12 @@ class Frame1 extends JFrame implements ActionListener{
 Frame1(){
        // adsroom = new String[]{"101 - Deluxe", "102 - Deluxe", "201 - Executive", "202 - Executive", "301 - Suite", "302 - Suite"};
        
-       adsroom[0] = "101 - Deluxe" ;
-       adsroom[1] = "102 - Deluxe";
-       adsroom[2] =  "201 - Executive";
-       adsroom[3] = "202 - Executive";
-       adsroom[4] = "301 - Suite";
-       adsroom[5] = "302 - Suite" ;
+    adsroom[0] = "101 - Deluxe" ;
+    adsroom[1] = "102 - Deluxe";
+    adsroom[2] = "201 - Executive";
+    adsroom[3] = "202 - Executive";
+    adsroom[4] = "301 - Suite";
+    adsroom[5] = "302 - Suite" ;
     coloumn1[0] = "ROOM NO";
     coloumn1[1] = "TYPE";
     coloumn1[2] = "COST";
@@ -218,8 +218,8 @@ if(ae.getSource() == btnNewButton){
 		if(textField.getText().equals(user[i]) && passwordField.getText().equals(pass[i])){
 			Frame2 f2 = new Frame2(data,coloumn,room,coloumn1);
 			
-      f2.setBounds(90,110,878,593);
-			f2.setTitle("Catalog");
+      f2.setBounds(90,110,878,591);
+			f2.setTitle("Hotel Management System");
 			f2.setVisible(true);
 			//f2.add(new JLabel(new ImageIcon("background.jpg")));
 			f2.addWindowListener(new WindowAdapter(){
@@ -265,6 +265,7 @@ class AdminPage extends JFrame implements ActionListener{
   int addIsPressed = 0;
   int ei,ar;
  int addEmployee = 0,changeCost=0;
+      JLabel erlabel;
   
  
   AdminPage(){
@@ -361,6 +362,13 @@ class AdminPage extends JFrame implements ActionListener{
       
       acb = new JComboBox();
       acb1 = new JComboBox();
+
+      erlabel = new JLabel("Empty cost field"); 
+      erlabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      erlabel.setForeground(Color.RED);
+      erlabel.setBounds(379 ,475,140,20);
+      //ab3.setBounds(380,500,100,30);
+
      
       for(int i=1;i<(user.length);i++){ //for printing values 
          if(user[i] != null){
@@ -394,6 +402,14 @@ class AdminPage extends JFrame implements ActionListener{
       
    public void actionPerformed(ActionEvent ae){
       if(ae.getSource()==ab3){
+
+        if(art1.getText().equals(""))
+        {
+          this.add(erlabel);
+          repaint(); 
+        }
+        else
+        {
           if(addIsPressed == 1){
              count++;   
              user[count]=atf1.getText(); //problem is here
@@ -416,6 +432,9 @@ class AdminPage extends JFrame implements ActionListener{
                }
             }
         dispose();
+      }
+
+
       }
        if(ae.getSource()== ab1){
            String x = acb.getSelectedItem().toString();
@@ -457,6 +476,7 @@ class AdminPage extends JFrame implements ActionListener{
           this.add(art0);
           this.add(art1);
           art0.setText(room[ar][2]);
+          art1.setText(room[ar][2]);
           
           repaint();
       }
@@ -1036,9 +1056,9 @@ this.setLayout(null);
 		lblNewLabel_4.setBounds(648, 137, 103, 99);
 		lblNewLabel_4.setVisible(true);
 
-		btnNewButton_6 = new JButton("New Booking");
+		btnNewButton_6 = new JButton(" Check-in");
 		this.add(btnNewButton_6);
-		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnNewButton_6.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnNewButton_6.setBounds(383, 421, 190, 45);
 		btnNewButton_6.addActionListener(this);
 		btnNewButton_6.setVisible(true);
