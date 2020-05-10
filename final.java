@@ -8,7 +8,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.*;
-
+import java.util.Scanner;
+import java.lang.Character;
 class Frame1 extends JFrame implements ActionListener{
  
  JButton btnNewButton;
@@ -329,8 +330,9 @@ class AdminPage extends JFrame implements ActionListener{
       
       al9.setBounds(50,380,100,30);
       al10.setBounds(50,440,100,30);
-       art0.setBounds(50,410,100,30);
+      art0.setBounds(50,410,100,30);
       art1.setBounds(50,470,100,30);
+      art1.setText("0");
      
       
     //  this.add(al1);
@@ -367,6 +369,7 @@ class AdminPage extends JFrame implements ActionListener{
       erlabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
       erlabel.setForeground(Color.RED);
       erlabel.setBounds(379 ,475,140,20);
+
       //ab3.setBounds(380,500,100,30);
 
      
@@ -412,7 +415,7 @@ class AdminPage extends JFrame implements ActionListener{
         {
           if(addIsPressed == 1){
              count++;   
-             user[count]=atf1.getText(); //problem is here
+             user[count]=atf1.getText(); 
                pass[count]=atf2.getText();
           }
             if(addEmployee == 1){
@@ -543,7 +546,7 @@ JLabel  em1,em2,em3,em4,em,rm,rm1,rm2,rm3,rm4,rm5,rm6;
 
 		int i = 0;
 
-JLabel req_2,req_3,req_4,req_5,ttitle1,ttitle2,ttitle3,ttitle4,ttitle6,ttitle51;
+JLabel req_2,req_3,req_4,req_5,ttitle1,ttitle2,ttitle3,ttitle4,ttitle6,ttitle51,ttitle6n;
 JRadioButton rdbtnNewRadioButton,rdbtnNewRadioButton_1,rdbtnNewRadioButton_2,rdbtnNewRadioButton_3,rdbtnNewRadioButton_4;
 //JComboBox comboBox_2;
 JTextField textField_5,textField_6;
@@ -815,6 +818,7 @@ public void removeCheckout()
   remove(ndays);
   remove(ndayslabel);
   remove(ttitle6);
+  remove(ttitle6n);
 	btnNewButton_4.setIcon(new ImageIcon("checkout_unchecked.jpg"));
 	
 
@@ -850,7 +854,32 @@ public void removeRoom(){
    
 }
 
+public boolean isalphs(String s)
+{
+  for(int i = 0; i<s.length();i++)
+  {
+    if(Character.isLetter(s.charAt(i)) == false)
+    {
+      return false;
+      
+    }
+  }
+  return true;
+}
 
+
+public boolean isnums(String s)
+{
+  for(int i = 0; i<s.length();i++)
+  {
+    if( Character.isLetter(s.charAt(i))  )
+    {
+      return false;
+      
+    }
+  }
+  return true;
+}
 
 Frame2(String data[][],String coloumn[],String room[][],String column1[]){
 this.c = getContentPane();
@@ -901,7 +930,7 @@ this.setLayout(null);
       setVisible(true);*/
 
 	jt = new JTable(Frame1.data,Frame1.coloumn);
-	jt.setBounds(150,100,555,320);
+	jt.setBounds(150,100,535,320);
  	sp3 = new JScrollPane(jt);
         TableColumn colum1 = jt.getColumnModel().getColumn(3);
             colum1.setMinWidth(120);
@@ -930,7 +959,7 @@ this.setLayout(null);
             
             
        jt2 = new JTable(Frame1.room,Frame1.coloumn1);
-	     jt2.setBounds(150,150,580,102);
+	     jt2.setBounds(150,150,600,102);
            	sp4 = new JScrollPane(jt2);
           TableColumn colum2 = jt2.getColumnModel().getColumn(3);
             colum2.setMinWidth(60);
@@ -1337,7 +1366,7 @@ this.setLayout(null);
 
 		buttonGroup = new ButtonGroup();
 
-		rdbtnNewRadioButton = new JRadioButton("Food");
+		rdbtnNewRadioButton = new JRadioButton("Food",true);
 		buttonGroup.add(rdbtnNewRadioButton);
 		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnNewRadioButton.setBackground(Color.WHITE);
@@ -1374,7 +1403,7 @@ this.setLayout(null);
 		rdbtnNewRadioButton_3.setBounds(461, 137, 127, 32);
 
 		
-		rdbtnNewRadioButton_4 = new JRadioButton("Completed");
+		rdbtnNewRadioButton_4 = new JRadioButton("Completed",true);
 		buttonGroup_1.add(rdbtnNewRadioButton_4);
 		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnNewRadioButton_4.setBackground(Color.WHITE);
@@ -1399,7 +1428,7 @@ this.setLayout(null);
 		check_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		check_1.setBounds(199, 136, 63, 22);
 		
-		check_2 = new JLabel("New label");
+		check_2 = new JLabel("");
 		check_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		check_2.setBounds(350, 136, 120, 22);
 		
@@ -1407,7 +1436,7 @@ this.setLayout(null);
 		check_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		check_3.setBounds(199, 200, 95, 22);
 		
-		check_4 = new JLabel("New label");
+		check_4 = new JLabel("");
 		check_4.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		check_4.setBounds(350, 200, 95, 22);
 		
@@ -1415,7 +1444,7 @@ this.setLayout(null);
 		check_5.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		check_5.setBounds(199, 258, 89, 22);
 		
-		check_6 = new JLabel("New label");
+		check_6 = new JLabel("");
 		check_6.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		check_6.setBounds(350, 258, 97, 22);
 		
@@ -1487,6 +1516,11 @@ this.setLayout(null);
     ttitle6.setFont(new Font("Tahoma", Font.PLAIN, 14));
     ttitle6.setForeground(Color.RED);
     ttitle6.setBounds(350, 400, 195, 40);
+
+    ttitle6n = new JLabel("Invalid Details");
+    ttitle6n.setFont(new Font("Tahoma", Font.PLAIN, 14));
+    ttitle6n.setForeground(Color.RED);
+    ttitle6n.setBounds(350, 400, 195, 40);
 
     //table.setEditable(false);
     //table_2.setEditable(false);
@@ -1631,7 +1665,7 @@ date = cal.get(Calendar.DATE)+"/"+cal.get(Calendar.MONTH)+"/"+cal.get(Calendar.Y
 Calendar calb = Calendar.getInstance();
 
  System.out.println("ActionEvent entered");
-if(nameField.getText().equals(null) || textField_2.getText().equals(null) || textField_3.getText().equals(null) || textField_4.getText().equals(null) || textArea.getText().equals(null) || (textField_3.getText()).length() != 12 || (textField_4.getText()).length() != 10 || comboBox_1.getSelectedIndex()== 0)
+if(nameField.getText().equals(null) || !(isalphs(nameField.getText())) || textField_2.getText().equals(null) || !(isnums(textField_2.getText())) || textField_3.getText().equals(null) || !(isnums(textField_3.getText())) || textField_4.getText().equals(null) || !(isnums(textField_4.getText())) || textArea.getText().equals(null) || (textField_3.getText()).length() != 12 || (textField_4.getText()).length() != 10 || comboBox_1.getSelectedIndex()== 0)
 {
 		System.out.println("If Entered");
 		nameField.setText("");
@@ -1642,6 +1676,8 @@ if(nameField.getText().equals(null) || textField_2.getText().equals(null) || tex
 		
 		add(lblNewLabel_7);
 		repaint();
+
+    prev = 2;
 		
 }
 
@@ -1865,9 +1901,9 @@ lblNewLabel_1.setText("6");
 lblNewLabel_4.setText("0");
 }
 
+prev = 1;
 }
 
-prev = 1;
 add(background);
 repaint();
 }
@@ -2215,7 +2251,7 @@ if(a.getSource() == submitButton){
 	validate();
 	repaint();*/
 
-if(textField_5.getText().equals("") || textField_6.getText().equals(""))
+if(textField_5.getText().equals("") || !(isalphs(textField_5.getText())) || textField_6.getText().equals("") || !(isnums(textField_6.getText())) )
 {
 	btnNewButton_2.setIcon(new ImageIcon("requests_checked.jpg"));
 	remove(background);
@@ -2223,6 +2259,7 @@ if(textField_5.getText().equals("") || textField_6.getText().equals(""))
 	add(background);
 	textField_5.setText("");
 	textField_6.setText("");
+  prev = 5;
 	repaint();
 }
 	else
@@ -2488,8 +2525,9 @@ add(ttitle2);
 add(ttitle3);
 add(background);
 
-}
 prev = 4;
+
+}
 
 
 }
@@ -2698,6 +2736,16 @@ if(comboBox_3.getSelectedIndex() == 0)
   ttitle6.setVisible(true);
   //add(background);
   repaint();
+}
+else if(textField_7.getText().equals("")|| ndays.getText().equals("") || !(isnums(textField_7.getText())) || !(isnums(ndays.getText())))
+{
+  remove(background);
+  add(ttitle6n);
+  add(background);
+  ttitle6n.setVisible(true);
+  //add(background);
+  repaint();
+  
 }
 else
 {
@@ -3203,7 +3251,8 @@ cbxSelectedindex = comboBox_3.getSelectedIndex() - 1;
 			}
 			check_4.setText("Deluxe");
       ndays.setText(cust[2][0]);	
-      remove(ttitle6);
+      remove(ttitle6);  
+      remove(ttitle6n);
 		}
 		if(cbxSelectedindex == 1)
 		{
@@ -3214,7 +3263,8 @@ cbxSelectedindex = comboBox_3.getSelectedIndex() - 1;
 			}
 			check_4.setText("Deluxe");	
       ndays.setText(cust[2][1]);  
-      remove(ttitle6);
+      remove(ttitle6); 
+      remove(ttitle6n);
 		}
 		else if(cbxSelectedindex== 2)
 		{
@@ -3225,7 +3275,8 @@ cbxSelectedindex = comboBox_3.getSelectedIndex() - 1;
 			}
 			check_4.setText("Executive");
       ndays.setText(cust[2][2]);  
-      remove(ttitle6);
+      remove(ttitle6); 
+      remove(ttitle6n);
 		}
 		else if(cbxSelectedindex== 3)
 		{
@@ -3236,7 +3287,8 @@ cbxSelectedindex = comboBox_3.getSelectedIndex() - 1;
 			}
 			check_4.setText("Executive");
       ndays.setText(cust[2][3]);  
-      remove(ttitle6);
+      remove(ttitle6); 
+      remove(ttitle6n);
 		}
 		else if(cbxSelectedindex == 4)
 		{
@@ -3247,7 +3299,8 @@ cbxSelectedindex = comboBox_3.getSelectedIndex() - 1;
 			}
 			check_4.setText("Suite");
       ndays.setText(cust[2][4]);  
-      remove(ttitle6);
+      remove(ttitle6); 
+      remove(ttitle6n);
 		}
 		else if(cbxSelectedindex == 5)
 		{
@@ -3258,7 +3311,8 @@ cbxSelectedindex = comboBox_3.getSelectedIndex() - 1;
 			}
 			check_4.setText("Suite");
       ndays.setText(cust[2][5]);  
-      remove(ttitle6);
+      remove(ttitle6); 
+      remove(ttitle6n);
 		}
     
     if(cbxSelectedindex>-1)
@@ -3507,10 +3561,13 @@ billframe(String l1,String l2,String l3,String l4,String l5,String l6,String l7,
     outbill2 = new JLabel("Booking ID:");
     outbill2.setBounds(495, 88, 180, 18);
     outbill2.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
+    //this.add(outbill2);
+    if(!(id.equals(""))){
     this.add(outbill2);
+    }
 
     outbill3 = new JLabel("New label");
-    outbill3.setBounds(560, 88, 146, 18);
+    outbill3.setBounds(555, 88, 146, 18);
     outbill3.setText(id);
     outbill3.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
     this.add(outbill3);
@@ -3520,6 +3577,7 @@ billframe(String l1,String l2,String l3,String l4,String l5,String l6,String l7,
     outbill_2.setBounds(80, 125, 77, 25);
     outbill_2.setFont(new Font("Trebuchet MS", Font.BOLD, 19));
     this.add(outbill_2);
+
     
     outbill_3 = new JLabel("New label");
     outbill_3.setBounds(143, 125, 150, 25);
@@ -3562,18 +3620,18 @@ billframe(String l1,String l2,String l3,String l4,String l5,String l6,String l7,
     
     
     table_3 = new JTable(broom,serprice);
-    table_3.setBounds(50, 304, 255, 322);
+    table_3.setBounds(42, 304, 255, 322);
     this.add(table_3);
     //table_3.setEditable(false);
     
     outbill_10 = new JLabel("Services");
     outbill_10.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
-    outbill_10.setBounds(51, 271, 110, 25);
+    outbill_10.setBounds(44, 273, 110, 25);
     this.add(outbill_10);
     
     outbill_11 = new JLabel("Price");
     outbill_11.setFont(new Font("Trebuchet MS", Font.PLAIN, 16));
-    outbill_11.setBounds(181, 271, 46, 25);
+    outbill_11.setBounds(174, 273, 46, 25);
     this.add(outbill_11);
     
     outbutton = new JButton("DONE");
@@ -3589,7 +3647,7 @@ billframe(String l1,String l2,String l3,String l4,String l5,String l6,String l7,
     this.add(outbill_22);
     
     outbill_23 = new JLabel("New label");
-    outbill_23.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
+    outbill_23.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
     outbill_23.setBounds(180, 216, 150, 25);
     this.add(outbill_23);
     outbill_23.setText(l14);
@@ -3600,8 +3658,8 @@ billframe(String l1,String l2,String l3,String l4,String l5,String l6,String l7,
     this.add(outbill_24);
     
     outbill_25 = new JLabel("New label");
-    outbill_25.setFont(new Font("Trebuchet MS", Font.PLAIN, 15));
-    outbill_25.setBounds(518, 216, 150, 25);
+    outbill_25.setFont(new Font("Trebuchet MS", Font.PLAIN, 14));
+    outbill_25.setBounds(512, 216, 150, 25);
     this.add(outbill_25);
     outbill_25.setText(l13);
 
