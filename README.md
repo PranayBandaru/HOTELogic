@@ -2,7 +2,7 @@
 A Java based Hotel management system that streamlines hotel operations and save time and resources
 
 
-The key aim of our application is to automate the day to day activities of a hotel, replacing the conventional book methods. 
+The key aim is to automate the day to day activities of a hotel, replacing the conventional book methods. 
 Features:
   Multiple user logins
   Admin Login
